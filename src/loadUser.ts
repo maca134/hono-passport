@@ -2,6 +2,7 @@ import type { Context } from 'hono';
 import { HonoPassportEnv } from './HonoPassportEnv';
 import { HonoPassportOptions } from './HonoPassportOptions';
 
+
 export async function loadUser<TUser, TSessionUser>(
 	ctx: Context<HonoPassportEnv<TUser, TSessionUser>>,
 	options: HonoPassportOptions<TUser, TSessionUser>
