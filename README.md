@@ -1,4 +1,4 @@
-# Redis Store
+# Hono Passport
 
 ...more to come...
 
