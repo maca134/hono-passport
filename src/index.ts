@@ -90,7 +90,6 @@ export function passport<TUser, TSessionUser = TUser>(
 
 	return {
 		initialize: () => async (ctx, next) => {
-			console.log('passport initialize');
 			if (!ctx.var.session) {
 				throw new PassportError('Session not initialized');
 			}
@@ -98,7 +97,6 @@ export function passport<TUser, TSessionUser = TUser>(
 			await next();
 		},
 		login: (strategyName) => {
-			console.log('passport login');
 			const strategy = options.strategies.find(
 				(s) => s.name === strategyName,
 			);
@@ -106,7 +104,6 @@ export function passport<TUser, TSessionUser = TUser>(
 				throw new PassportError('Strategy not found');
 			}
 			return async (ctx, next) => {
-				console.log('passport login req');
 				const response = await strategy.authenticate(ctx as Context, (user) => saveUser(ctx, user, options));
 				if (response) {
 					return response;
@@ -115,7 +112,6 @@ export function passport<TUser, TSessionUser = TUser>(
 			};
 		},
 		logout: () => (ctx, next) => {
-			console.log('passport logout');
 			const session = ctx.var.session.data;
 			if (session.__passport__) {
 				session.__passport__ = undefined;
