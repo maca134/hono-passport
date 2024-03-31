@@ -1,17 +1,11 @@
 import type { Context, MiddlewareHandler } from 'hono';
+import type { HonoSessionEnv } from '@maca134/hono-session';
 
 export type HonoPassportEnv<TUser = any, TSessionUser = TUser> = {
 	Variables: {
 		user?: TUser;
-		session: {
-			data: {
-				__passport__?: {
-					user?: TSessionUser;
-				};
-			};
-		};
 	};
-};
+} & HonoSessionEnv<{ __passport__?: { user?: TSessionUser; }; }>;
 
 export type Awaitable<T> = T | Promise<T>;
 
@@ -51,7 +45,7 @@ async function loadUser<TUser, TSessionUser>(
 	if (user) {
 		ctx.set('user', user);
 	} else {
-		delete ctx.var.session.data.__passport__;
+		ctx.var.session.data.__passport__ = undefined;
 	}
 }
 
@@ -69,6 +63,7 @@ async function saveUser<TUser, TSessionUser>(
 	if (data) {
 		ctx.var.session.data.__passport__ = { user: data };
 	}
+	await ctx.var.session.regenerate();
 	ctx.set('user', user);
 }
 
