@@ -1,6 +1,6 @@
 {
 	"name": "@maca134/hono-passport",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "",
 	"main": "dist/cjs/index.js",
 	"type": "module",
