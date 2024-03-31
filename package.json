@@ -1,0 +1,93 @@
+{
+	"name": "@maca134/hono-passport",
+	"version": "0.0.1",
+	"description": "",
+	"main": "dist/cjs/index.js",
+	"type": "module",
+	"module": "dist/index.js",
+	"types": "dist/types/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "rimraf dist && tsx ./build.ts && npm run copy:package.cjs.json",
+		"copy:package.cjs.json": "shx cp ./package.cjs.json ./dist/cjs/package.json && shx cp ./package.cjs.json ./dist/types/package.json",
+		"lint": "eslint --ext js,ts src",
+		"lint:fix": "eslint --ext js,ts src --fix",
+		"format": "prettier --check \"src/**/*.{js,ts}\"",
+		"format:fix": "prettier --write \"src/**/*.{js,ts}\"",
+		"postbuild": "publint",
+		"prerelease": "npm run build",
+		"release": "np --no-tests"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/types/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/cjs/index.js"
+		}
+	},
+	"typesVersions": {
+		"*": {
+			"types": [
+				"./dist/types"
+			]
+		}
+	},
+	"author": "Matthew McConnell <maca134@googlemail.com> (https://github.com/maca134)",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/maca134/hono-passport.git"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org"
+	},
+	"homepage": "https://github.com/maca134/hono-passport",
+	"keywords": [
+		"hono",
+		"web",
+		"app",
+		"http",
+		"application",
+		"framework",
+		"router",
+		"cloudflare",
+		"workers",
+		"fastly",
+		"compute@edge",
+		"deno",
+		"bun",
+		"lagon",
+		"lambda",
+		"nodejs"
+	],
+	"devDependencies": {
+		"@hono/node-server": "^1.9.1",
+		"@types/eslint": "^8.56.6",
+		"@types/node": "^20.12.2",
+		"@typescript-eslint/eslint-plugin": "^7.4.0",
+		"@typescript-eslint/parser": "^7.4.0",
+		"esbuild": "^0.20.2",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-define-config": "^2.1.0",
+		"eslint-import-resolver-typescript": "^3.6.1",
+		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-node": "^11.1.0",
+		"glob": "^10.3.12",
+		"np": "^10.0.2",
+		"prettier": "^3.2.5",
+		"publint": "^0.2.7",
+		"rimraf": "^5.0.5",
+		"shx": "^0.3.4",
+		"tsx": "^4.7.1",
+		"typescript": "^5.4.3"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"dependencies": {
+		"hono": "^4.1.7"
+	}
+}
