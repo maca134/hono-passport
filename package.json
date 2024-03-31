@@ -11,6 +11,7 @@
 	],
 	"scripts": {
 		"update-deps": "npm-check-updates -u && npm i",
+		"release": "np --no-tests",
 		"build": "rimraf dist && tsx ./build.ts && npm run copy:package.cjs.json",
 		"copy:package.cjs.json": "shx cp ./package.cjs.json ./dist/cjs/package.json && shx cp ./package.cjs.json ./dist/types/package.json",
 		"lint": "eslint --ext js,ts src",
@@ -18,8 +19,7 @@
 		"format": "prettier --check \"src/**/*.{js,ts}\"",
 		"format:fix": "prettier --write \"src/**/*.{js,ts}\"",
 		"postbuild": "publint",
-		"prerelease": "npm run build",
-		"release": "np --no-tests"
+		"prerelease": "npm run build"
 	},
 	"exports": {
 		".": {
