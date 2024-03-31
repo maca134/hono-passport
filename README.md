@@ -9,13 +9,13 @@
 You can install from npm registry with `npm` command:
 
 ```
-npm install @maca134/hono-session-redis-store
+npm install @maca134/hono-passport
 ```
 
 Or use `yarn`:
 
 ```
-yarn add @maca134/hono-session-redis-store
+yarn add @maca134/hono-passport
 ```
 ## Usage
 
