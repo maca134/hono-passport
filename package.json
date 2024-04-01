@@ -90,7 +90,7 @@
 		"node": ">=16.0.0"
 	},
 	"dependencies": {
-		"@maca134/hono-session": "^1.0.5",
+		"@maca134/hono-session": "^1.0.6",
 		"hono": "^4.1.7"
 	}
 }
