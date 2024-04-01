@@ -1,7 +1,6 @@
 import type { Context } from 'hono';
-import { HonoPassportEnv } from './HonoPassportEnv';
-import { HonoPassportOptions } from './HonoPassportOptions';
-
+import type { HonoPassportEnv } from './HonoPassportEnv';
+import type { HonoPassportOptions } from './HonoPassportOptions';
 
 export async function saveUser<TUser, TSessionUser>(
 	ctx: Context<HonoPassportEnv<TUser, TSessionUser>>,

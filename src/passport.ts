@@ -5,7 +5,6 @@ import { PassportError } from './PassportError';
 import { loadUser } from './loadUser';
 import { saveUser } from './saveUser';
 
-
 export function passport<TUser, TSessionUser = TUser>(
 	options: HonoPassportOptions<TUser, TSessionUser>
 ): HonoPassportReturn<TUser, TSessionUser> {
@@ -13,8 +12,10 @@ export function passport<TUser, TSessionUser = TUser>(
 		throw new PassportError('No strategies found');
 	}
 
-	if ((options.serializeUser && !options.deserializeUser) ||
-		(!options.serializeUser && options.deserializeUser)) {
+	if (
+		(options.serializeUser && !options.deserializeUser) ||
+		(!options.serializeUser && options.deserializeUser)
+	) {
 		throw new PassportError(
 			'serializeUser and deserializeUser must be both defined or neither defined'
 		);
@@ -29,14 +30,14 @@ export function passport<TUser, TSessionUser = TUser>(
 			await next();
 		},
 		login: (strategyName) => {
-			const strategy = options.strategies.find(
-				(s) => s.name === strategyName
-			);
+			const strategy = options.strategies.find((s) => s.name === strategyName);
 			if (!strategy) {
 				throw new PassportError('Strategy not found');
 			}
 			return async (ctx, next) => {
-				const response = await strategy.authenticate(ctx as Context, (user) => saveUser(ctx, user, options));
+				const response = await strategy.authenticate(ctx as Context, (user) =>
+					saveUser(ctx, user, options)
+				);
 				if (response) {
 					return response;
 				}

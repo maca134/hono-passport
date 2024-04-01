@@ -1,16 +1,11 @@
-import { Context } from "hono";
-import { HonoPassportStrategy } from "./HonoPassportStrategy";
+import type { Context } from 'hono';
+import type { HonoPassportStrategy } from './HonoPassportStrategy';
 
-
-export type TemplateStrategyOptions = {
-	
-};
+export type TemplateStrategyOptions = {};
 
 export function templateStrategy<TUser>(
 	options: TemplateStrategyOptions,
-	validate: (
-		ctx: Context,
-	) => Promise<TUser | undefined>,
+	validate: (ctx: Context) => Promise<TUser | undefined>
 ): HonoPassportStrategy<TUser> {
 	return {
 		name: 'template',
@@ -22,4 +17,3 @@ export function templateStrategy<TUser>(
 		},
 	};
 }
-

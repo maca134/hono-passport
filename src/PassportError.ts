@@ -1,1 +1,1 @@
-export class PassportError extends Error { }
+export class PassportError extends Error {}
