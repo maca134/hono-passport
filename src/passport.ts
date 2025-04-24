@@ -4,6 +4,7 @@ import type { HonoPassportReturn } from './HonoPassportReturn';
 import { PassportError } from './PassportError';
 import { loadUser } from './loadUser';
 import { saveUser } from './saveUser';
+import { clearUser } from './clearUser';
 
 export function passport<TUser, TSessionUser = TUser>(
 	options: HonoPassportOptions<TUser, TSessionUser>
@@ -45,11 +46,9 @@ export function passport<TUser, TSessionUser = TUser>(
 			};
 		},
 		logout: () => (ctx, next) => {
-			const session = ctx.var.session.data;
-			if (session.__passport__) {
-				session.__passport__ = undefined;
-			}
+			clearUser(ctx);
 			return next();
 		},
+		clearUser,
 	};
 }
