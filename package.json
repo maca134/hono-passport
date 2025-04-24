@@ -46,22 +46,7 @@
 	},
 	"homepage": "https://github.com/maca134/hono-passport",
 	"keywords": [
-		"hono",
-		"web",
-		"app",
-		"http",
-		"application",
-		"framework",
-		"router",
-		"cloudflare",
-		"workers",
-		"fastly",
-		"compute@edge",
-		"deno",
-		"bun",
-		"lagon",
-		"lambda",
-		"nodejs"
+		"hono"
 	],
 	"devDependencies": {
 		"@hono/node-server": "^1.9.1",
@@ -89,8 +74,8 @@
 	"engines": {
 		"node": ">=16.0.0"
 	},
-	"dependencies": {
-		"@maca134/hono-session": "^1.0.6",
-		"hono": "^4.1.7"
+	"peerDependencies": {
+		"@maca134/hono-session": ">=1.*",
+		"hono": ">=4.*"
 	}
 }
