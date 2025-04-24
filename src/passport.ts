@@ -36,6 +36,7 @@ export function passport<TUser, TSessionUser = TUser>(
 				throw new PassportError('Strategy not found');
 			}
 			return async (ctx, next) => {
+				clearUser(ctx);
 				const response = await strategy.authenticate(ctx as Context, (user) =>
 					saveUser(ctx, user, options)
 				);
