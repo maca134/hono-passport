@@ -1,6 +1,7 @@
 import type { Context } from 'hono';
 import type { HonoPassportEnv } from './HonoPassportEnv';
 import type { HonoPassportOptions } from './HonoPassportOptions';
+import { clearUser } from './clearUser';
 
 export async function loadUser<TUser, TSessionUser>(
 	ctx: Context<HonoPassportEnv<TUser, TSessionUser>>,
@@ -19,6 +20,6 @@ export async function loadUser<TUser, TSessionUser>(
 	if (user) {
 		ctx.set('user', user);
 	} else {
-		ctx.var.session.data.__passport__ = undefined;
+		clearUser(ctx);
 	}
 }
