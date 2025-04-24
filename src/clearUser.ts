@@ -6,4 +6,5 @@ export function clearUser<TUser, TSessionUser>(ctx: Context<HonoPassportEnv<TUse
 	if (session.__passport__) {
 		session.__passport__.user = undefined;
 	}
+	session.__passport__ = undefined;
 }
