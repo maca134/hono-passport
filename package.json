@@ -39,7 +39,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/maca134/hono-passport.git"
+		"url": "git+https://github.com/maca134/hono-passport.git"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
